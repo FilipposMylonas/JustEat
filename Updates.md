@@ -33,6 +33,11 @@ Complete visual overhaul based on an HTML mockup with a warm, food-focused desig
 
 **Loading/error states**: Loading is now a centered spinner inside a rounded surface panel with "Curating the best kitchens near you..." text. Error state shows a restaurant-themed illustration, "Tastebuds Interrupted" heading, helpful message, and a "Try New Search" button that resets to the default postcode. Added empty-results state too.
 
-**Icons**: Installed `lucide-react` for Star, MapPin, Search, and UtensilsCrossed icons.
+**Icons**: I always loved `lucide-react`, so I installed `lucide-react` for Star, MapPin, Search, and UtensilsCrossed icons.
 
 **Page layout**: Widened container to `max-w-7xl`. Page is now a thin shell — just `<main>` wrapping `<RestaurantList>` which owns the heading, search, and grid.
+
+### 6. Card background — blurred logo effect
+When looking at the website and the API, I noticed that the Just Eat API only returns a small `.gif` logo per restaurant, no hero images. Stretching it to fill the card looked terrible. Tried a gradient background with the logo at natural size first and it looked too plain and basic.
+
+After researching, and basing this on older projects I did, I landed on a Spotify-style approach: duplicate the logo as a blurred, scaled-up background (`blur-2xl scale-150 opacity-60`) behind the sharp logo. Each card now gets a unique colorful background derived from its own logo. Falls back to the restaurant's first letter if no `logoUrl` exists. Pure CSS, no new dependencies.
