@@ -20,6 +20,7 @@ export type Restaurant = {
   cuisines: Cuisine[];
   rating: Rating;
   address: Address;
+  logoUrl: string;
 };
 
 export type ApiResponse = {
