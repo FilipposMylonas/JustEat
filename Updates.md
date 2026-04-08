@@ -19,3 +19,20 @@ Wired it all together in `page.tsx` — just a heading and `<RestaurantList />` 
 Tried loading the page and got "Failed to fetch". The Just Eat API doesn't set CORS headers, so the browser blocks the response. Confirmed the API works fine server-side with a `curl` — returns 200.
 
 Fix: created a Next.js route handler at `src/app/api/restaurants/[postcode]/route.ts` that proxies the request server-side. Updated `src/lib/api.ts` to call `/api/restaurants/{postcode}` instead of the external URL. Rebuild passed, page loads correctly now.
+
+### 5. UI Redesign — "Culinary Curator"
+Complete visual overhaul based on an HTML mockup with a warm, food-focused design language.
+
+**Fonts**: Replaced Geist with Manrope (headlines) + Work Sans (body) via `next/font/google`. Registered as `--font-heading` and `--font-sans` in Tailwind theme.
+
+**Color system**: Replaced flat gray/white palette with a warm MD3-inspired token set in `globals.css`. Key tokens: `primary` (#964900), `primary-container` (#ff8000), `surface` (#fff8f5), plus secondary, error, and outline variants. Removed dark mode — mockup is light-only.
+
+**Restaurant cards**: Added image section using `logoUrl` from the Just Eat API (plain `<img>` with lazy loading, surface-colored fallback). Rating badge is now an absolute-positioned pill overlay with a star icon. Cuisine tags and address styled with the new color tokens. Hover effect scales the image and lifts the card shadow.
+
+**Postcode search**: New `PostcodeSearch` component — controlled input with search icon and submit button. State lives in `RestaurantList` which re-fetches when the postcode changes. Replaces the hardcoded "EC4M7RF" heading.
+
+**Loading/error states**: Loading is now a centered spinner inside a rounded surface panel with "Curating the best kitchens near you..." text. Error state shows a restaurant-themed illustration, "Tastebuds Interrupted" heading, helpful message, and a "Try New Search" button that resets to the default postcode. Added empty-results state too.
+
+**Icons**: Installed `lucide-react` for Star, MapPin, Search, and UtensilsCrossed icons.
+
+**Page layout**: Widened container to `max-w-7xl`. Page is now a thin shell — just `<main>` wrapping `<RestaurantList>` which owns the heading, search, and grid.
