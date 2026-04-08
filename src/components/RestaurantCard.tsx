@@ -10,14 +10,21 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
 
   return (
     <article className="group rounded-xl overflow-hidden bg-white transition-all duration-300 hover:shadow-[0_12px_32px_rgba(37,25,18,0.06)]">
-      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-surface-container-highest to-surface-container-low flex items-center justify-center">
+      <div className="relative h-48 overflow-hidden bg-surface-container-highest flex items-center justify-center">
         {logoUrl ? (
-          <img
-            src={logoUrl}
-            alt={name}
-            loading="lazy"
-            className="max-h-24 max-w-[60%] object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-110"
-          />
+          <>
+            <img
+              src={logoUrl}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover blur-2xl scale-150 opacity-60"
+            />
+            <img
+              src={logoUrl}
+              alt={name}
+              loading="lazy"
+              className="relative z-10 max-h-24 max-w-[60%] object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-110"
+            />
+          </>
         ) : (
           <span className="text-5xl font-extrabold font-heading text-outline-variant/40">
             {name.charAt(0)}
