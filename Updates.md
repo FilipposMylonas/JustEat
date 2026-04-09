@@ -41,3 +41,11 @@ Complete visual overhaul based on an HTML mockup with a warm, food-focused desig
 When looking at the website and the API, I noticed that the Just Eat API only returns a small `.gif` logo per restaurant, no hero images. Stretching it to fill the card looked terrible. Tried a gradient background with the logo at natural size first and it looked too plain and basic.
 
 After researching, and basing this on older projects I did, I landed on a Spotify-style approach: duplicate the logo as a blurred, scaled-up background (`blur-2xl scale-150 opacity-60`) behind the sharp logo. Each card now gets a unique colorful background derived from its own logo. Falls back to the restaurant's first letter if no `logoUrl` exists. Pure CSS, no new dependencies.
+
+## 2026-04-09
+
+Came back to the UI, I always leave a day between finishing a design and reviewing it, otherwise I have tunnel vision and I stop noticing the small things. Did another pass looking for visual tweaks and anything that felt off, nothing changed in the end.
+
+Ran through the project hunting for errors and small improvements. Caught the lint warning about the plain `<img>` tag (Next wants `next/image`), among a few other things worth cleaning up, but since stuff like handling images and optimising was not in the assigment it self, I noted it down as a future improvement.
+
+Spent some time thinking about what the README should actually cover — the stack, the design decisions, the CORS workaround, etc. Sketched out a scaffold and the points I wanted hit, then handed it to Claude write and formulate everything.

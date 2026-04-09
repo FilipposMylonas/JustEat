@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# markdown — only README and Updates are tracked
+*.md
+!README.md
+!Updates.md
+
+# claude / ai tooling
+.claude/
